@@ -1,0 +1,4 @@
+#!/bin/bash
+#$ 打开脚本时, 给脚本传参
+useradd "$1"
+echo "$2" | passwd --stdin "$2"

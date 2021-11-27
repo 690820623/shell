@@ -1,0 +1,8 @@
+#!/bin/bash
+#日期做后文件名
+tar -czf log-`date+%Y%m%d`.tar.gz /var/log
+
+#crontab -e #每周五定时执行 这里是另外用一个命令, 不只是在脚本里设置的
+
+#crontab -e
+#00 03 * * 5 文件的绝对路径
