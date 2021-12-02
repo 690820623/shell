@@ -1,0 +1,18 @@
+#!/bin/bash
+#Author: Dawn
+#抽取根分区剩余空间
+disk_size=$(df / |awk '/\//{print $4}')
+
+#提取内存剩余空间
+mem_size=$(free |awk '/Mem/{print $4)}')
+
+while : 
+do
+#注意内存和磁盘提取的空间大小都是以kb为单位
+if [ "$disk_size" -le 512000 -a "$mem_size" -le 1024000 ];
+then 
+    mail -s Warning 15815850575@qq.com <<EOF
+insufficient resources, 资源不足
+EOF
+fi
+done

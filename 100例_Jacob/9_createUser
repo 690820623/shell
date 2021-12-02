@@ -1,0 +1,17 @@
+#!/bin/bash
+read -p "请输入用户名" user
+# -z 为空时true 退出码为2
+
+if [ -z $user ]; then
+    echo "您没有输入账户名"
+    exit 2
+fi
+
+# 关闭echo显示 stty -echo； 打开echo显示 stty echo
+stty -echo
+read -p "请输入密码：" pass
+stty echo
+pass=${pass:-123456}
+#设置默认值，就算在赋值语句之后也不会覆盖新值
+useradd "$user"
+echo "$pass" | passwd --stdin "$user"
